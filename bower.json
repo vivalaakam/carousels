@@ -1,0 +1,12 @@
+{
+  "name": "attraction",
+  "version": "0.0.1",
+  "authors": [
+    "vivalaakam <vivalaakam@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3",
+    "bootstrap" : "~3"
+  }
+}

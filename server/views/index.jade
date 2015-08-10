@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(data-ng-app="app")
+    .container(data-ng-controller="AttractionsController")
+      .filter.form-group
+        label Тип аттракциона
+        ul.filter__items
+          li.filter__item(data-ng-repeat="item in selected")
+            span.filter__item_name {{item.name}}
+            a.filter__item_remove(data-ng-click="removeType(item)", href="javascript:void(0)") x
+          li.filter__add
+            select.form-control.input-sm(data-ng-options="item.id as item.name for item in types | NotSelectedFilter:selected", data-ng-model="nv" , data-ng-change="addType()")
+      .attractions
+        table.table.table-striped
+          thead
+            tr
+              th Название
+              th Тип аттракциона
+              th Возраст
+              th Интенсивность
+              th Фото
+              th Видео
+                  
+          tbody
+            tr.attraction(data-ng-repeat="attraction in attractions | SelectedFilter:selected")
+              td.attraction__name {{attraction.name}}
+              td.attraction__types
+                ul.attraction__types_list
+                  li.attraction__types_item(data-ng-repeat="type in attraction.type")
+                    a(href="javascript:void(0)" , data-ng-click="setType(type)"){{getType(type).name}}
+              td.attraction__minAge {{attraction.minAge}}
+              td.attraction__intensity {{attraction.intensity}}
+              td.attraction__photo {{attraction.havePhoto|checked}}
+              td.attraction__video {{attraction.haveVideo|checked}}
+                    
+    script(src='/javascripts/main.js')
